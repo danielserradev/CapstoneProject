@@ -20,6 +20,11 @@ namespace RentX.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+        public DbSet<Leasor> Leasors { get; set; }
+        public DbSet<Renter> Renters { get; set; }
+        public DbSet<Transaction> Transactions { get; set; }
+        public DbSet<Rating> Ratings { get; set; }
+        public DbSet<Item> Items { get; set; }        
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {

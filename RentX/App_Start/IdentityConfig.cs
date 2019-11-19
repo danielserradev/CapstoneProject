@@ -86,6 +86,11 @@ namespace RentX
             }
             return manager;
         }
+
+        internal Task AddToRoleAsync(string id, object userRoles)
+        {
+            throw new NotImplementedException();
+        }
     }
 
     // Configure the application sign-in manager which is used in this application.
