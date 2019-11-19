@@ -33,6 +33,10 @@ namespace RentX.Models
         public string City { get; set; }
 
         [Required]
+        [Display(Name = "State")]
+        public string StateCode { get; set; }
+
+        [Required]
         [Display(Name = "Zip Code")]
         public int ZipCode { get; set; }
 
