@@ -170,15 +170,31 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ItemsController.cs" />
     <Compile Include="Controllers\LeasorsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\QueuesController.cs" />
+    <Compile Include="Controllers\RatingsController.cs" />
     <Compile Include="Controllers\RentersController.cs" />
+    <Compile Include="Controllers\TransactionsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Migrations\201911192126440_initt.cs" />
     <Compile Include="Migrations\201911192126440_initt.Designer.cs">
       <DependentUpon>201911192126440_initt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911192356417_queuetable.cs" />
+    <Compile Include="Migrations\201911192356417_queuetable.Designer.cs">
+      <DependentUpon>201911192356417_queuetable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911200009493_queuelist.cs" />
+    <Compile Include="Migrations\201911200009493_queuelist.Designer.cs">
+      <DependentUpon>201911200009493_queuelist.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911200042166_removepropfromtrans.cs" />
+    <Compile Include="Migrations\201911200042166_removepropfromtrans.Designer.cs">
+      <DependentUpon>201911200042166_removepropfromtrans.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -252,8 +268,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Items\" />
     <Folder Include="Views\Leasors\" />
+    <Folder Include="Views\Queues\" />
+    <Folder Include="Views\Ratings\" />
     <Folder Include="Views\Renters\" />
+    <Folder Include="Views\Transactions\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -271,6 +291,15 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201911192126440_initt.resx">
       <DependentUpon>201911192126440_initt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911192356417_queuetable.resx">
+      <DependentUpon>201911192356417_queuetable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911200009493_queuelist.resx">
+      <DependentUpon>201911200009493_queuelist.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911200042166_removepropfromtrans.resx">
+      <DependentUpon>201911200042166_removepropfromtrans.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -17,11 +17,11 @@ namespace RentX.Models
         public string Review { get; set; }
 
         [ForeignKey("Leasor")]
-        public int LeasorId { get; set; }
+        public int? LeasorId { get; set; }
         public Leasor Leasor { get; set; }
 
         [ForeignKey("Renter")]
-        public int RenterId { get; set; }
+        public int? RenterId { get; set; }
         public Renter Renter { get; set; }
     }
 }

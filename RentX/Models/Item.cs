@@ -48,6 +48,8 @@ namespace RentX.Models
         [Display(Name = "End Date")]
         public DateTime? EndDate { get; set; }
 
+        public List<Transaction> Transactions { get; set; }
+
         [ForeignKey("Leasor")]
         public int LeasorId { get; set; }
         public Leasor Leasor { get; set; }

@@ -35,7 +35,7 @@ namespace RentX.Controllers
         public ActionResult Create()
         {
             Renter renter = new Renter();
-            return View();
+            return View(renter);
         }
 
         // POST: Renters/Create

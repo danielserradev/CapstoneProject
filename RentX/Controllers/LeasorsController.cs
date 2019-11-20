@@ -35,7 +35,7 @@ namespace RentX.Controllers
         public ActionResult Create()
         {
             Leasor leasor = new Leasor();
-            return View();
+            return View(leasor);
         }
 
         // POST: Leasors/Create

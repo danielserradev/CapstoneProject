@@ -16,9 +16,6 @@ namespace RentX.Models
         [Display(Name = "Time of Payment")]
         public DateTime? TimeOfPayment { get; set; }
 
-        [DataType(DataType.Date)]
-        [Display(Name = "Day of Payment")]
-        public DateTime? DayofPayment { get; set; }
 
         [ForeignKey("Leasor")]
         public int? LeasorId { get; set; }
