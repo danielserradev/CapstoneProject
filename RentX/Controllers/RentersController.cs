@@ -18,6 +18,14 @@ namespace RentX.Controllers
         {
             context = new ApplicationDbContext();
         }
+        public ActionResult GetListOfLeasors()
+        {
+
+            return View(context.Leasors.ToList());
+        }
+
+
+
         // GET: Renters
         public ActionResult Index()
         {
@@ -61,7 +69,7 @@ namespace RentX.Controllers
                 string id = User.Identity.GetUserId();
                 renter.ApplicationId = id;
                 context.SaveChanges();
-                return RedirectToAction("Deatails", "Renters", renter);
+                return RedirectToAction("Index", "Home");
             }
             catch
             {

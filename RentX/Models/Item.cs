@@ -55,7 +55,7 @@ namespace RentX.Models
         public Leasor Leasor { get; set; }
 
         [ForeignKey("Renter")]
-        public int RenterId { get; set; }
+        public int? RenterId { get; set; }
         public Renter Renter { get; set; }
 
         public enum DeliveryOptions

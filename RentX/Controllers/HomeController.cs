@@ -21,13 +21,13 @@ namespace RentX.Controllers
             if (User.IsInRole("Leasor"))
             {
 
-                Leasor  leasor = context.Leasors.Where(e => e.ApplicationId == userId).FirstOrDefault();
-                return RedirectToAction("Details", "Leasors", leasor);
+                Leasor leasor = context.Leasors.Where(e => e.ApplicationId == userId).FirstOrDefault();
+                return RedirectToAction("Index", "Leasors");
             }
             else if (User.IsInRole("Renter"))
             {
                 Renter renter = context.Renters.Where(c => c.ApplicationId == userId).FirstOrDefault();
-                return RedirectToAction("Details", "Renters", renter);
+                return RedirectToAction("Index", "Renters");
             }
             return View();
         }

@@ -165,13 +165,13 @@ namespace RentX.Controllers
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
                     await this.UserManager.AddToRoleAsync(user.Id, model.UserRoles);
-                    if (model.UserRoles == "Employee")
+                    if (model.UserRoles == "Leasor")
                     {
-                        return RedirectToAction("Create", "Employees");
+                        return RedirectToAction("Create", "Leasors");
                     }
-                    else if (model.UserRoles == "Customer")
+                    else if (model.UserRoles == "Renter")
                     {
-                        return RedirectToAction("Create", "Customers");
+                        return RedirectToAction("Create", "Renters");
                     }
                     return RedirectToAction("Index", "Home");
                 }

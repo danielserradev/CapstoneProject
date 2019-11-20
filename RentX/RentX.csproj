@@ -196,6 +196,10 @@
     <Compile Include="Migrations\201911200042166_removepropfromtrans.Designer.cs">
       <DependentUpon>201911200042166_removepropfromtrans.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201911201725259_nullfk.cs" />
+    <Compile Include="Migrations\201911201725259_nullfk.Designer.cs">
+      <DependentUpon>201911201725259_nullfk.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -265,14 +269,28 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Leasors\Create.cshtml" />
+    <Content Include="Views\Leasors\Details.cshtml" />
+    <Content Include="Views\Leasors\Index.cshtml" />
+    <Content Include="Views\Leasors\Edit.cshtml" />
+    <Content Include="Views\Leasors\Delete.cshtml" />
+    <Content Include="Views\Renters\Create.cshtml" />
+    <Content Include="Views\Renters\Delete.cshtml" />
+    <Content Include="Views\Renters\Details.cshtml" />
+    <Content Include="Views\Renters\Edit.cshtml" />
+    <Content Include="Views\Renters\Index.cshtml" />
+    <Content Include="Views\Items\Create.cshtml" />
+    <Content Include="Views\Items\Edit.cshtml" />
+    <Content Include="Views\Items\Delete.cshtml" />
+    <Content Include="Views\Items\Details.cshtml" />
+    <Content Include="Views\Items\Index.cshtml" />
+    <Content Include="Views\Leasors\GetLeasorItems.cshtml" />
+    <Content Include="Views\Renters\GetListOfLeasors.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Items\" />
-    <Folder Include="Views\Leasors\" />
     <Folder Include="Views\Queues\" />
     <Folder Include="Views\Ratings\" />
-    <Folder Include="Views\Renters\" />
     <Folder Include="Views\Transactions\" />
   </ItemGroup>
   <ItemGroup>
@@ -300,6 +318,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201911200042166_removepropfromtrans.resx">
       <DependentUpon>201911200042166_removepropfromtrans.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911201725259_nullfk.resx">
+      <DependentUpon>201911201725259_nullfk.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

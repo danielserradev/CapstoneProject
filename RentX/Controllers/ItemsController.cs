@@ -47,18 +47,19 @@ namespace RentX.Controllers
 
                 string id = User.Identity.GetUserId();
                 var leaser = context.Leasors.Where(u => u.ApplicationId == id).FirstOrDefault();
-                var renter = context.Renters.Where(r => r.ApplicationId == id).FirstOrDefault();
+                //var renter = context.Renters.Where(r => r.ApplicationId == id).FirstOrDefault();
                 item.LeasorId = leaser.LeasorId;
-                item.RenterId = renter.RenterId;
-                context.Items.Add(item);
+                //item.RenterId = renter.RenterId;
+                context.Items.Add(item);                
+                context.SaveChanges();
                 Queue queue = new Queue();
-                
                 queue.ItemId = item.ItemId;
                 context.SaveChanges();
                 return RedirectToAction("Index", "Home");
             }
-            catch
+            catch(Exception e)
             {
+
                 return View();
             }
         }

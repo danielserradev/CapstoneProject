@@ -18,6 +18,14 @@ namespace RentX.Controllers
         {
             context = new ApplicationDbContext();
         }
+
+        public ActionResult GetLeasorItems(int id)
+        {
+            
+            Leasor leasor = context.Leasors.Where(l => l.LeasorId == id).FirstOrDefault();
+            List<Item> leasorItems = context.Items.Where(l => l.LeasorId == leasor.LeasorId).ToList();
+            return View(leasorItems);
+        }
         // GET: Leasors
         public ActionResult Index()
         {
@@ -62,7 +70,7 @@ namespace RentX.Controllers
                 leasor.ApplicationId = id;
                 context.SaveChanges();
 
-                return RedirectToAction("Details", "Leasors", leasor);
+                return RedirectToAction("Index", "Home");
             }
             catch
             {
