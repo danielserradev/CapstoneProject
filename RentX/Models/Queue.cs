@@ -12,6 +12,7 @@ namespace RentX.Models
         [Key]
         public int QueueId { get; set; }
 
+        [NotMapped]
         public List<Renter> RenterQueue { get; set; }
 
         [ForeignKey("Item")]

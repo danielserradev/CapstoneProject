@@ -19,6 +19,27 @@ namespace RentX.Controllers
             context = new ApplicationDbContext();
         }
 
+        public ActionResult GetItemQueue(int id)
+        {
+            ItemQueueViewModel itemQueueViewModel = new ItemQueueViewModel() { RenterFirstNames = new List<string>(), RenterLastNames = new List<string>() };
+            Item item = context.Items.Where(i => i.ItemId == id).FirstOrDefault();
+            Queue queue = context.Queues.Where(q => q.ItemId == item.ItemId).FirstOrDefault();
+            List<QueueRenter> queueRenter = context.QueueRenters.Where(q => q.QueueId == queue.QueueId).ToList();
+            List<Renter> renters = new List<Renter>();
+            foreach (QueueRenter model in queueRenter)
+            {
+                var renter = context.Renters.Where(r => r.RenterId == model.RenterId).FirstOrDefault();
+                renters.Add(renter);
+            }
+            
+            foreach (Renter model in renters)
+            {
+                itemQueueViewModel.RenterFirstNames.Add(model.FirstName);
+                itemQueueViewModel.RenterLastNames.Add(model.LasttName);
+                
+            }
+            return View(itemQueueViewModel);
+        }
         public ActionResult GetLeasorItems(int id)
         {
             

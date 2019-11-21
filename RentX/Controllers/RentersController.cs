@@ -18,6 +18,24 @@ namespace RentX.Controllers
         {
             context = new ApplicationDbContext();
         }
+
+        public ActionResult AddSelfToQueue(int id)
+        {
+            var item = context.Items.Where(i => i.ItemId == id).FirstOrDefault();
+            string appId = User.Identity.GetUserId();
+            Renter renter = context.Renters.Where(r => r.ApplicationId == appId).FirstOrDefault();
+            Queue queue = context.Queues.Where(q => q.ItemId == item.ItemId).FirstOrDefault();
+
+            QueueRenter queueRenter = new QueueRenter();
+            context.QueueRenters.Add(queueRenter);
+            queueRenter.QueueId = queue.QueueId;
+            queueRenter.RenterId = renter.RenterId; 
+
+
+            context.SaveChanges();
+            return RedirectToAction("Index", "Home");
+            
+        }
         public ActionResult GetListOfLeasors()
         {
 
@@ -36,6 +54,8 @@ namespace RentX.Controllers
         public ActionResult Details(int id)
         {
             Renter renter = context.Renters.Where(r => r.RenterId == id).FirstOrDefault();
+            
+
             return View(renter);
         }
 

@@ -15,6 +15,8 @@ namespace RentX.Controllers
         {
             context = new ApplicationDbContext();
         }
+
+
         // GET: Queues
         public ActionResult Index()
         {

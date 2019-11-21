@@ -200,13 +200,23 @@
     <Compile Include="Migrations\201911201725259_nullfk.Designer.cs">
       <DependentUpon>201911201725259_nullfk.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201911211724373_undojt.cs" />
+    <Compile Include="Migrations\201911211724373_undojt.Designer.cs">
+      <DependentUpon>201911211724373_undojt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911211731517_queuerenters.cs" />
+    <Compile Include="Migrations\201911211731517_queuerenters.Designer.cs">
+      <DependentUpon>201911211731517_queuerenters.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Item.cs" />
+    <Compile Include="Models\ItemQueueViewModel.cs" />
     <Compile Include="Models\Leasor.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Queue.cs" />
+    <Compile Include="Models\QueueRenter.cs" />
     <Compile Include="Models\Rating.cs" />
     <Compile Include="Models\Renter.cs" />
     <Compile Include="Models\Transaction.cs" />
@@ -286,6 +296,7 @@
     <Content Include="Views\Items\Index.cshtml" />
     <Content Include="Views\Leasors\GetLeasorItems.cshtml" />
     <Content Include="Views\Renters\GetListOfLeasors.cshtml" />
+    <Content Include="Views\Leasors\GetItemQueue.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -321,6 +332,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201911201725259_nullfk.resx">
       <DependentUpon>201911201725259_nullfk.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911211724373_undojt.resx">
+      <DependentUpon>201911211724373_undojt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911211731517_queuerenters.resx">
+      <DependentUpon>201911211731517_queuerenters.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -43,6 +43,7 @@ namespace RentX.Models
         public float Lat { get; set; }
         public float Lng { get; set; }
 
+        [NotMapped]
         public List<Queue> QueuesIn { get; set; }
 
         [ForeignKey("ApplicationUser")]

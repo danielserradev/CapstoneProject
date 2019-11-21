@@ -38,9 +38,9 @@
             @Html.DisplayFor(modelItem => item.EmailAddress)
         </td>
         <td>
-            @Html.ActionLink("See My Items", "GetLeasorItems", new { id = item.LeasorId }) 
+            @Html.ActionLink("See My Items", "GetLeasorItems","Leasors", new { id = item.LeasorId }, null)
         </td>
-       
+        
         
         
     </tr>

@@ -58,6 +58,8 @@ namespace RentX.Models
         public int? RenterId { get; set; }
         public Renter Renter { get; set; }
 
+        
+
         public enum DeliveryOptions
         {
             SelfDelivery = 0,

@@ -54,6 +54,7 @@ namespace RentX.Controllers
                 context.SaveChanges();
                 Queue queue = new Queue();
                 queue.ItemId = item.ItemId;
+                context.Queues.Add(queue);
                 context.SaveChanges();
                 return RedirectToAction("Index", "Home");
             }

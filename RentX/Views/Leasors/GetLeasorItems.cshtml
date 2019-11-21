@@ -46,39 +46,44 @@
 
     @foreach (var item in Model)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Price)
-            </td>
-            <td>
-                <img height="100" width="150" src="@Url.Content(item.Image)" />
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RentCounter)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Availability)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NumOfMonthsForRent)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.StartDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EndDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LeasorId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RenterId)
-            </td>
-
-        </tr>
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Name)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Price)
+    </td>
+    <td>
+        <img height="100" width="150" src="@Url.Content(item.Image)" />
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.RentCounter)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Availability)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.NumOfMonthsForRent)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.StartDate)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.EndDate)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.LeasorId)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.RenterId)
+    </td>
+    <td>
+        @Html.ActionLink("Click to enter Queue", "AddSelfToQueue", "Renters", new { id = item.ItemId }, null)
+    </td>
+    <td>
+        @Html.ActionLink("Click to see Queue", "GetItemQueue", "Leasors", new { id = item.ItemId }, null)
+    </td>
+</tr>
     }
 
 </table>
