@@ -7,10 +7,10 @@ namespace RentX.Models
 {
     public class ItemQueueViewModel
     {
-        public List<string> RenterFirstNames { get; set; }
+        //public List<string> RenterFirstNames { get; set; }
 
-        public List<string> RenterLastNames { get; set; }
+        //public List<string> RenterLastNames { get; set; }
 
-        
+        public List<Renter> Renters { get; set; }
     }
 }

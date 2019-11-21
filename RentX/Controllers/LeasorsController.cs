@@ -21,7 +21,7 @@ namespace RentX.Controllers
 
         public ActionResult GetItemQueue(int id)
         {
-            ItemQueueViewModel itemQueueViewModel = new ItemQueueViewModel() { RenterFirstNames = new List<string>(), RenterLastNames = new List<string>() };
+            ItemQueueViewModel itemQueueViewModel = new ItemQueueViewModel() { Renters = new List<Renter>() };
             Item item = context.Items.Where(i => i.ItemId == id).FirstOrDefault();
             Queue queue = context.Queues.Where(q => q.ItemId == item.ItemId).FirstOrDefault();
             List<QueueRenter> queueRenter = context.QueueRenters.Where(q => q.QueueId == queue.QueueId).ToList();
@@ -34,8 +34,7 @@ namespace RentX.Controllers
             
             foreach (Renter model in renters)
             {
-                itemQueueViewModel.RenterFirstNames.Add(model.FirstName);
-                itemQueueViewModel.RenterLastNames.Add(model.LasttName);
+                itemQueueViewModel.Renters.Add(model);
                 
             }
             return View(itemQueueViewModel);

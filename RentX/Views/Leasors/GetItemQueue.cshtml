@@ -4,40 +4,27 @@
     ViewBag.Title = "GetItemQueue";
 }
 
-<h2>GetItemQueue</h2>
+<h2>Item Queue</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+
 <table class="table">
     <tr>
         <td>
-            @Html.DisplayNameFor(model => model.RenterFirstNames)
+            @Html.DisplayNameFor(model => model.Renters[0].FirstName)
         </td>
         <td>
-            @Html.DisplayNameFor(model => model.RenterLastNames)
+            @Html.DisplayNameFor(model => model.Renters[0].LasttName)
         </td>
     </tr>
-
-    @foreach (string item in Model.RenterFirstNames)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(model => model.RenterFirstNames)
-            </td>
-
-        </tr>
-    }
-
-    @for (int i = 0; i < Model.RenterFirstNames.Count; i++)
-    {
-<tr>
-    <td>
-        @Html.DisplayFor(model => model.RenterFirstNames)
-    </td>
-    <td>
-        @Html.DisplayFor(model => model.RenterLastNames)
-    </td>
-</tr>
-    }
+@for (int i = 0; i < Model.Renters.Count; i++)
+{
+    <tr>
+        <td>
+            @Html.DisplayFor(model => model.Renters[i].FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.Renters[i].LasttName)
+        </td>
+    </tr>
+}
 </table>   
