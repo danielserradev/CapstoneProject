@@ -18,11 +18,23 @@ namespace RentX.Controllers
         {
             context = new ApplicationDbContext();
         }
-
+        public ActionResult RequestRenterPayment(int id, int ItemId)
+        {
+            Renter renter = context.Renters.Where(r => r.RenterId == id).FirstOrDefault();
+            Item item = context.Items.Where(i => i.ItemId == ItemId).FirstOrDefault();
+            Transaction transaction = new Transaction();
+            transaction.RenterId = renter.RenterId;
+            transaction.ItemId = item.ItemId;
+            transaction.TimeOfPayment = DateTime.Now;
+            context.Transactions.Add(transaction);
+            context.SaveChanges();
+            return RedirectToAction("Index", "Home");
+        }
         public ActionResult GetItemQueue(int id)
         {
-            ItemQueueViewModel itemQueueViewModel = new ItemQueueViewModel() { Renters = new List<Renter>() };
+            ItemQueueViewModel itemQueueViewModel = new ItemQueueViewModel() { Renters = new List<Renter>(), ItemId = 0};
             Item item = context.Items.Where(i => i.ItemId == id).FirstOrDefault();
+            itemQueueViewModel.ItemId = item.ItemId;
             Queue queue = context.Queues.Where(q => q.ItemId == item.ItemId).FirstOrDefault();
             List<QueueRenter> queueRenter = context.QueueRenters.Where(q => q.QueueId == queue.QueueId).ToList();
             List<Renter> renters = new List<Renter>();

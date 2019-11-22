@@ -1,0 +1,50 @@
+﻿@model RentX.Models.Rating
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Rating</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NumOfStars)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NumOfStars)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Review)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Review)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LeasorId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LeasorId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RenterId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RenterId)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.RatingId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

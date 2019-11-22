@@ -10,7 +10,7 @@ namespace RentX.Models
         //public List<string> RenterFirstNames { get; set; }
 
         //public List<string> RenterLastNames { get; set; }
-
+        public int ItemId { get; set; }
         public List<Renter> Renters { get; set; }
     }
 }

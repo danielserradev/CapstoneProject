@@ -49,6 +49,8 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -208,6 +210,10 @@
     <Compile Include="Migrations\201911211731517_queuerenters.Designer.cs">
       <DependentUpon>201911211731517_queuerenters.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201911221433502_fkdeletion.cs" />
+    <Compile Include="Migrations\201911221433502_fkdeletion.Designer.cs">
+      <DependentUpon>201911221433502_fkdeletion.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -297,11 +303,13 @@
     <Content Include="Views\Leasors\GetLeasorItems.cshtml" />
     <Content Include="Views\Renters\GetListOfLeasors.cshtml" />
     <Content Include="Views\Leasors\GetItemQueue.cshtml" />
+    <Content Include="Views\Ratings\Create.cshtml" />
+    <Content Include="Views\Ratings\Details.cshtml" />
+    <Content Include="Views\Ratings\GetRenterRatings.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Queues\" />
-    <Folder Include="Views\Ratings\" />
     <Folder Include="Views\Transactions\" />
   </ItemGroup>
   <ItemGroup>
@@ -339,6 +347,12 @@
     <EmbeddedResource Include="Migrations\201911211731517_queuerenters.resx">
       <DependentUpon>201911211731517_queuerenters.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911221433502_fkdeletion.resx">
+      <DependentUpon>201911221433502_fkdeletion.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

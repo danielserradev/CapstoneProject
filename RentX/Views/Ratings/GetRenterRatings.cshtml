@@ -1,0 +1,49 @@
+﻿@model IEnumerable<RentX.Models.Rating>
+
+@{
+    ViewBag.Title = "GetRenterRatings";
+}
+
+<h2>GetRenterRatings</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NumOfStars)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Review)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LeasorId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RenterId)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumOfStars)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Review)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LeasorId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RenterId)
+            </td>
+
+        </tr>
+    }
+
+</table>
+@Html.ActionLink("Back to Home", "Index", "Home")

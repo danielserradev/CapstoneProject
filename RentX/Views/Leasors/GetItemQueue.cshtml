@@ -25,6 +25,13 @@
         <td>
             @Html.DisplayFor(model => model.Renters[i].LasttName)
         </td>
+        <td>
+            @Html.ActionLink("See Renter Reviews", "GetRenterRatings", "Ratings", new { id = Model.Renters[i].RenterId }, null)
+        </td>
+        <td>
+            @Html.ActionLink("Request Payment", "RequestRenterPayment", "Leasors", new { id = Model.Renters[i].RenterId, ItemId = Model.ItemId }, null)
+        </td>
     </tr>
 }
 </table>   
+@Html.ActionLink("Back", "Index", "Home")

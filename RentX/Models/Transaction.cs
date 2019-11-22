@@ -17,9 +17,7 @@ namespace RentX.Models
         public DateTime? TimeOfPayment { get; set; }
 
 
-        [ForeignKey("Leasor")]
-        public int? LeasorId { get; set; }
-        public Leasor Leasor { get; set; }
+       
 
         [ForeignKey("Renter")]
         public int? RenterId { get; set; }

@@ -45,7 +45,7 @@ namespace RentX.Controllers
                 string id = User.Identity.GetUserId();
                 var leaser = context.Leasors.Where(l => l.ApplicationId == id).FirstOrDefault();
                 var renter = context.Renters.Where(r => r.ApplicationId == id).FirstOrDefault();
-                transaction.LeasorId = leaser.LeasorId;
+                
                 transaction.RenterId = renter.RenterId;
                 transaction.TimeOfPayment = DateTime.Now;
                 
