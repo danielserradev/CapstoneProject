@@ -32,6 +32,7 @@ namespace RentX.Controllers
         public ActionResult Create()
         {
             Item item = new Item();
+            item.Availability = true;
             return View(item);
         }
 

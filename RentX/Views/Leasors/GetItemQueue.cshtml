@@ -18,20 +18,23 @@
     </tr>
 @for (int i = 0; i < Model.Renters.Count; i++)
 {
-    <tr>
-        <td>
-            @Html.DisplayFor(model => model.Renters[i].FirstName)
-        </td>
-        <td>
-            @Html.DisplayFor(model => model.Renters[i].LasttName)
-        </td>
-        <td>
-            @Html.ActionLink("See Renter Reviews", "GetRenterRatings", "Ratings", new { id = Model.Renters[i].RenterId }, null)
-        </td>
-        <td>
-            @Html.ActionLink("Request Payment", "RequestRenterPayment", "Leasors", new { id = Model.Renters[i].RenterId, ItemId = Model.ItemId }, null)
-        </td>
-    </tr>
+<tr>
+    <td>
+        @Html.DisplayFor(model => model.Renters[i].FirstName)
+    </td>
+    <td>
+        @Html.DisplayFor(model => model.Renters[i].LasttName)
+    </td>
+    <td>
+        @Html.ActionLink("See Renter Reviews", "GetRenterRatings", "Ratings", new { id = Model.Renters[i].RenterId }, null)
+    </td>
+    <td>
+        @Html.ActionLink("Request Payment", "RequestRenterPayment", "Leasors", new { id = Model.Renters[i].RenterId, ItemId = Model.ItemId }, null)
+    </td>
+    <td>
+        @Html.ActionLink("Rent out Item", "RentOutItem", "Leasors", new { id = Model.Renters[i].RenterId, ItemId = Model.ItemId }, null)
+    </td>
+</tr>
 }
 </table>   
 @Html.ActionLink("Back", "Index", "Home")

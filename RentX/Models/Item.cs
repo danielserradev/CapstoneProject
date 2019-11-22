@@ -28,7 +28,7 @@ namespace RentX.Models
 
         [Required]
         [Display(Name = "Item Availability")]
-        public bool Availability { get; set; }
+        public bool? Availability { get; set; }
 
         [Required]
         [Display(Name = "Rent Duration By Months")]

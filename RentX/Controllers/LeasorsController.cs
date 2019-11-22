@@ -18,6 +18,18 @@ namespace RentX.Controllers
         {
             context = new ApplicationDbContext();
         }
+        public ActionResult RentOutItem(int id, int ItemId)
+        {
+            Renter renter = context.Renters.Where(r => r.RenterId == id).FirstOrDefault();
+            Item item = context.Items.Where(i => i.ItemId == ItemId).FirstOrDefault();
+            item.RentCounter++;
+            item.StartDate = DateTime.Now;
+            item.EndDate = DateTime.Now.AddMonths(item.NumOfMonthsForRent);
+            item.Availability = false;
+            item.RenterId = renter.RenterId;
+            context.SaveChanges();
+            return RedirectToAction("Index", "Home");
+        }
         public ActionResult RequestRenterPayment(int id, int ItemId)
         {
             Renter renter = context.Renters.Where(r => r.RenterId == id).FirstOrDefault();

@@ -18,6 +18,8 @@ namespace RentX.Controllers
         {
             context = new ApplicationDbContext();
         }
+
+        
         public ActionResult GetPaymentRequests(int id)
         {
             List<PaymentRequest> paymentRequests = context.PaymentRequests.Where(p => p.RenterId == id).ToList();
@@ -33,6 +35,7 @@ namespace RentX.Controllers
             transaction.TimeOfPayment = DateTime.Now;
             context.Transactions.Add(transaction);
             context.SaveChanges();
+            //text leasor of payment
             return RedirectToAction("Index", "Home");
         }
         public ActionResult AddSelfToQueue(int id)
