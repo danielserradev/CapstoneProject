@@ -22,12 +22,12 @@ namespace RentX.Controllers
             {
 
                 Leasor leasor = context.Leasors.Where(e => e.ApplicationId == userId).FirstOrDefault();
-                return RedirectToAction("Index", "Leasors");
+                return RedirectToAction("Details", "Leasors", new { id = leasor.LeasorId });
             }
             else if (User.IsInRole("Renter"))
             {
                 Renter renter = context.Renters.Where(c => c.ApplicationId == userId).FirstOrDefault();
-                return RedirectToAction("Index", "Renters");
+                return RedirectToAction("Details", "Renters", new { id = renter.RenterId });
             }
             return View();
         }

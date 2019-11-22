@@ -35,53 +35,45 @@
         <th>
             @Html.DisplayNameFor(model => model.EndDate)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.LeasorId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.RenterId)
-        </th>
+
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Price)
-        </td>
-        <td>
-            <img height="200" width="250" src="@Url.Content(item.Image)" />
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.RentCounter)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Availability)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NumOfMonthsForRent)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.StartDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EndDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.LeasorId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.RenterId)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ItemId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ItemId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ItemId })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                <img height="200" width="250" src="@Url.Content(item.Image)" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RentCounter)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Availability)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumOfMonthsForRent)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EndDate)
+            </td>
+
+            <td>
+
+                @Html.ActionLink("Details", "Details", "Items", new { id = item.ItemId }, null)
+
+            </td>
+        </tr>
+    }
 
 </table>
+@Html.ActionLink("Back to List", "Index")
