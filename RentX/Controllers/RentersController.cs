@@ -18,7 +18,23 @@ namespace RentX.Controllers
         {
             context = new ApplicationDbContext();
         }
-
+        public ActionResult GetPaymentRequests(int id)
+        {
+            List<PaymentRequest> paymentRequests = context.PaymentRequests.Where(p => p.RenterId == id).ToList();
+            return View(paymentRequests);
+        }
+        public ActionResult PayRequest(int id, int ItemId)
+        {
+            Renter renter = context.Renters.Where(r => r.RenterId == id).FirstOrDefault();
+            Item item = context.Items.Where(i => i.ItemId == ItemId).FirstOrDefault();
+            Transaction transaction = new Transaction();
+            transaction.RenterId = renter.RenterId;
+            transaction.ItemId = item.ItemId;
+            transaction.TimeOfPayment = DateTime.Now;
+            context.Transactions.Add(transaction);
+            context.SaveChanges();
+            return RedirectToAction("Index", "Home");
+        }
         public ActionResult AddSelfToQueue(int id)
         {
             var item = context.Items.Where(i => i.ItemId == id).FirstOrDefault();

@@ -21,6 +21,11 @@ namespace RentX.Controllers
             List<Rating> ratings = context.Ratings.Where(r => r.RenterId == id).ToList();
             return View(ratings);
         }
+        public ActionResult GetLeasorRatings(int id)
+        {
+            List<Rating> ratings = context.Ratings.Where(r => r.LeasorId == id).ToList();
+            return View(ratings);
+        }
         // GET: Ratings
         public ActionResult Index()
         {

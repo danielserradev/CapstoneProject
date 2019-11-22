@@ -22,12 +22,12 @@ namespace RentX.Controllers
         {
             Renter renter = context.Renters.Where(r => r.RenterId == id).FirstOrDefault();
             Item item = context.Items.Where(i => i.ItemId == ItemId).FirstOrDefault();
-            Transaction transaction = new Transaction();
-            transaction.RenterId = renter.RenterId;
-            transaction.ItemId = item.ItemId;
-            transaction.TimeOfPayment = DateTime.Now;
-            context.Transactions.Add(transaction);
+            PaymentRequest paymentRequest = new PaymentRequest();
+            paymentRequest.RenterId = renter.RenterId;
+            paymentRequest.ItemId = item.ItemId;
+            context.PaymentRequests.Add(paymentRequest);
             context.SaveChanges();
+            
             return RedirectToAction("Index", "Home");
         }
         public ActionResult GetItemQueue(int id)

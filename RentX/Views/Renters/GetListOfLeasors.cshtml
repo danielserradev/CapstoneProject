@@ -27,23 +27,26 @@
     </tr>
 
 @foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.FirstName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.LasttName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EmailAddress)
-        </td>
-        <td>
-            @Html.ActionLink("See My Items", "GetLeasorItems","Leasors", new { id = item.LeasorId }, null)
-        </td>
-        
-        
-        
-    </tr>
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.FirstName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.LasttName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.EmailAddress)
+    </td>
+    <td>
+        @Html.ActionLink("See My Items", "GetLeasorItems", "Leasors", new { id = item.LeasorId }, null)
+    </td>
+    <td>
+        @Html.ActionLink("See My Reviews", "GetLeasorRatings", "Ratings", new { id = item.LeasorId }, null)
+    </td>
+
+
+
+</tr>
 }
 
 </table>

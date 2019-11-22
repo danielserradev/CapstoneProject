@@ -214,6 +214,14 @@
     <Compile Include="Migrations\201911221433502_fkdeletion.Designer.cs">
       <DependentUpon>201911221433502_fkdeletion.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201911221641046_paymentrequest.cs" />
+    <Compile Include="Migrations\201911221641046_paymentrequest.Designer.cs">
+      <DependentUpon>201911221641046_paymentrequest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911221641491_paymentrequests.cs" />
+    <Compile Include="Migrations\201911221641491_paymentrequests.Designer.cs">
+      <DependentUpon>201911221641491_paymentrequests.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -221,6 +229,7 @@
     <Compile Include="Models\ItemQueueViewModel.cs" />
     <Compile Include="Models\Leasor.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\PaymentRequest.cs" />
     <Compile Include="Models\Queue.cs" />
     <Compile Include="Models\QueueRenter.cs" />
     <Compile Include="Models\Rating.cs" />
@@ -306,6 +315,8 @@
     <Content Include="Views\Ratings\Create.cshtml" />
     <Content Include="Views\Ratings\Details.cshtml" />
     <Content Include="Views\Ratings\GetRenterRatings.cshtml" />
+    <Content Include="Views\Ratings\GetLeasorRatings.cshtml" />
+    <Content Include="Views\Renters\GetPaymentRequests.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -349,6 +360,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201911221433502_fkdeletion.resx">
       <DependentUpon>201911221433502_fkdeletion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911221641046_paymentrequest.resx">
+      <DependentUpon>201911221641046_paymentrequest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911221641491_paymentrequests.resx">
+      <DependentUpon>201911221641491_paymentrequests.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

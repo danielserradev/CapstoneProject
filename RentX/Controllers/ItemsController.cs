@@ -58,7 +58,7 @@ namespace RentX.Controllers
                 context.SaveChanges();
                 return RedirectToAction("Index", "Home");
             }
-            catch(Exception e)
+            catch
             {
 
                 return View();

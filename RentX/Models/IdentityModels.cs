@@ -26,7 +26,7 @@ namespace RentX.Models
         public DbSet<Rating> Ratings { get; set; }
         public DbSet<Item> Items { get; set; }   
         public DbSet<Queue> Queues { get; set; }
-
+        public DbSet<PaymentRequest> PaymentRequests { get; set; }
         public DbSet<QueueRenter> QueueRenters { get; set; }
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
