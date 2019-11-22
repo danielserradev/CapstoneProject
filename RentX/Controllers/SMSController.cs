@@ -33,7 +33,7 @@ namespace RentX.Controllers
             var message = MessageResource.Create(
                 to: to,
                 from: from,
-                body: "messege to renter");
+                body: "You have a payment request for an item you are interested in.");
             return Content(message.Sid);
 
             
@@ -51,7 +51,7 @@ namespace RentX.Controllers
             var message = MessageResource.Create(
                 to: to,
                 from: from,
-                body: "messege to leasor");
+                body: "You have a new renter in a queue.");
             return Content(message.Sid);
 
            
@@ -68,7 +68,7 @@ namespace RentX.Controllers
             var message = MessageResource.Create(
                 to: to,
                 from: from,
-                body: "messege to renter");
+                body: "Your payment has been recieved, enjoy your item.");
             return Content(message.Sid);
 
 
@@ -86,7 +86,7 @@ namespace RentX.Controllers
             var message = MessageResource.Create(
                 to: to,
                 from: from,
-                body: "messege to leasor");
+                body: "You have recieved a Payment for an item.");
             return Content(message.Sid);
 
 

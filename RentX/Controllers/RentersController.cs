@@ -21,7 +21,10 @@ namespace RentX.Controllers
             sendText = new SMSController();
         }
 
-        
+        public ActionResult GetAllItemsForRent()
+        {
+            return View(context.Items.ToList());
+        }
         public ActionResult GetPaymentRequests(int id)
         {
             List<PaymentRequest> paymentRequests = context.PaymentRequests.Where(p => p.RenterId == id).ToList();
@@ -38,7 +41,7 @@ namespace RentX.Controllers
             context.Transactions.Add(transaction);
             context.SaveChanges();
             Leasor leasor = context.Leasors.Where(l => l.LeasorId == item.LeasorId).FirstOrDefault();
-            sendText.SendSMSToLeasor(leasor);
+            sendText.SendSMSToLeasorToNotifyOfTransaction(leasor);
             return RedirectToAction("Index", "Home");
         }
         public ActionResult AddSelfToQueue(int id)
@@ -56,7 +59,7 @@ namespace RentX.Controllers
 
             context.SaveChanges();
             Leasor leasor = context.Leasors.Where(l => l.LeasorId == item.LeasorId).FirstOrDefault();
-            sendText.SendSMSToLeasor(leasor);
+            sendText.SendSMSToLeasorToNotifyRenterAddedToQueue(leasor);
             return RedirectToAction("Index", "Home");
             
         }

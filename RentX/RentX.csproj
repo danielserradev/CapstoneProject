@@ -341,6 +341,7 @@
     <Content Include="Views\Ratings\GetRenterRatings.cshtml" />
     <Content Include="Views\Ratings\GetLeasorRatings.cshtml" />
     <Content Include="Views\Renters\GetPaymentRequests.cshtml" />
+    <Content Include="Views\Renters\GetAllItemsForRent.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
