@@ -14,9 +14,11 @@ namespace RentX.Controllers
     public class LeasorsController : Controller
     {
         ApplicationDbContext context;
+        SMSController sendText;
         public LeasorsController()
         {
             context = new ApplicationDbContext();
+            sendText = new SMSController();
         }
         public ActionResult RentOutItem(int id, int ItemId)
         {
@@ -28,6 +30,7 @@ namespace RentX.Controllers
             item.Availability = false;
             item.RenterId = renter.RenterId;
             context.SaveChanges();
+            sendText.SendSMSToRenter(renter);
             return RedirectToAction("Index", "Home");
         }
         public ActionResult RequestRenterPayment(int id, int ItemId)
@@ -39,7 +42,7 @@ namespace RentX.Controllers
             paymentRequest.ItemId = item.ItemId;
             context.PaymentRequests.Add(paymentRequest);
             context.SaveChanges();
-            
+            sendText.SendSMSToRenter(renter);
             return RedirectToAction("Index", "Home");
         }
         public ActionResult GetItemQueue(int id)

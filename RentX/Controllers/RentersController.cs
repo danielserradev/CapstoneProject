@@ -14,9 +14,11 @@ namespace RentX.Controllers
     public class RentersController : Controller
     {
         ApplicationDbContext context;
+        SMSController sendText;
         public RentersController()
         {
             context = new ApplicationDbContext();
+            sendText = new SMSController();
         }
 
         
@@ -35,7 +37,8 @@ namespace RentX.Controllers
             transaction.TimeOfPayment = DateTime.Now;
             context.Transactions.Add(transaction);
             context.SaveChanges();
-            //text leasor of payment
+            Leasor leasor = context.Leasors.Where(l => l.LeasorId == item.LeasorId).FirstOrDefault();
+            sendText.SendSMSToLeasor(leasor);
             return RedirectToAction("Index", "Home");
         }
         public ActionResult AddSelfToQueue(int id)
@@ -52,6 +55,8 @@ namespace RentX.Controllers
 
 
             context.SaveChanges();
+            Leasor leasor = context.Leasors.Where(l => l.LeasorId == item.LeasorId).FirstOrDefault();
+            sendText.SendSMSToLeasor(leasor);
             return RedirectToAction("Index", "Home");
             
         }

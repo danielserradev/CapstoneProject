@@ -40,6 +40,10 @@ namespace RentX.Models
         [Display(Name = "Zip Code")]
         public int ZipCode { get; set; }
 
+        [Required]
+        [Display(Name = "Phone Number")]
+        public string PhoneNumber { get; set; }
+
         public float Lat { get; set; }
         public float Lng { get; set; }
 
