@@ -20,7 +20,27 @@ namespace RentX.Controllers
             context = new ApplicationDbContext();
             sendText = new SMSController();
         }
-
+        public ActionResult StripePayment(Item item)
+        {
+            TransactionViewModel transactionViewModel = new TransactionViewModel() { ItemName = "", ItemPrice = 0, RenterId = 0 };
+            string appId = User.Identity.GetUserId();
+            Renter renter = context.Renters.Where(r => r.ApplicationId == appId).FirstOrDefault();
+            transactionViewModel.RenterId = renter.RenterId;
+            transactionViewModel.ItemName = item.Name;
+            transactionViewModel.ItemPrice = Convert.ToInt32(item.Price)*100;
+            Leasor leasor = context.Leasors.Where(l => l.LeasorId == item.LeasorId).FirstOrDefault();
+            PaymentRequest paymentRequest = context.PaymentRequests.Where(p => p.RenterId == renter.RenterId && p.ItemId == item.ItemId).FirstOrDefault();
+            context.PaymentRequests.Remove(paymentRequest);
+            context.SaveChanges();
+            //sendText.SendSMSToLeasorToNotifyOfTransaction(leasor);
+            return View(transactionViewModel);
+        }
+        [HttpPost]
+        public ActionResult StripePayment(Renter renter)
+        {
+            
+            return RedirectToAction("Index", "Home");
+        }
         public ActionResult GetAllItemsForRent()
         {
             return View(context.Items.ToList());
@@ -40,9 +60,8 @@ namespace RentX.Controllers
             transaction.TimeOfPayment = DateTime.Now;
             context.Transactions.Add(transaction);
             context.SaveChanges();
-            Leasor leasor = context.Leasors.Where(l => l.LeasorId == item.LeasorId).FirstOrDefault();
-            sendText.SendSMSToLeasorToNotifyOfTransaction(leasor);
-            return RedirectToAction("Index", "Home");
+            Leasor leasor = context.Leasors.Where(l => l.LeasorId == item.LeasorId).FirstOrDefault();            
+            return RedirectToAction("StripePayment", "Renters", item);
         }
         public ActionResult AddSelfToQueue(int id)
         {
@@ -59,7 +78,7 @@ namespace RentX.Controllers
 
             context.SaveChanges();
             Leasor leasor = context.Leasors.Where(l => l.LeasorId == item.LeasorId).FirstOrDefault();
-            sendText.SendSMSToLeasorToNotifyRenterAddedToQueue(leasor);
+            //sendText.SendSMSToLeasorToNotifyRenterAddedToQueue(leasor);
             return RedirectToAction("Index", "Home");
             
         }

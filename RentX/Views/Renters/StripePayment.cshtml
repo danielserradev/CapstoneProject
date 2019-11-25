@@ -1,0 +1,28 @@
+﻿@model RentX.Models.TransactionViewModel
+
+@{
+    ViewBag.Title = "StripePayment";
+}
+
+<h2>StripePayment</h2>
+@Scripts.Render("~/bundles/jquery")
+<div>Payment for @Model.ItemName</div>
+
+<head>
+    <title>Checkout</title>
+    <script src="https://js.stripe.com/v3/"></script>
+</head>
+
+<form action="Details/@Model.RenterId" method="POST">
+    <script
+            src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+            data-key="@APIKeys.StripeKey"
+            data-amount="@Model.ItemPrice "
+            data-name="RentX"
+            data-description=""
+            data-image=""
+            data-locale="auto"
+            data-zip-code="false"
+            data-currency="usd">
+    </script>
+</form>

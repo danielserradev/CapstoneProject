@@ -29,7 +29,7 @@
             @Html.DisplayFor(modelItem => item.ItemId)
         </td>
         <td>
-            @Html.ActionLink("Pay Request", "PayRequest", "Renters", new { id = item.RenterId, ItemId = item.ItemId }, null)
+            @Html.ActionLink("Pay Request", "PayRequest", "Renters", new { id = item.RenterId, ItemId = item.ItemId }, null) |
             @Html.ActionLink("Edit", "Edit", new { id = item.PaymentRequestId }) |
             @Html.ActionLink("Details", "Details", new { id = item.PaymentRequestId }) |
             @Html.ActionLink("Delete", "Delete", new { id = item.PaymentRequestId })
