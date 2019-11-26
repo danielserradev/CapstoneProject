@@ -12,6 +12,7 @@ namespace RentX
     {
         protected void Application_Start()
         {
+            //RouteTable.Routes.MapHubs();
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);

@@ -8,6 +8,8 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using PusherServer;
+using System.Net;
 
 namespace RentX.Controllers
 {
@@ -19,6 +21,32 @@ namespace RentX.Controllers
         {
             context = new ApplicationDbContext();
             sendText = new SMSController();
+        }
+        public ActionResult Messenger()
+        {
+            return View();
+        }
+        [HttpPost]
+        public async Task<ActionResult> Messenger(Leasor leasor)
+        {
+            var options = new PusherOptions
+            {
+                Cluster = "us2",
+                Encrypted = true
+            };
+
+            var pusher = new Pusher(
+              APIKeys.PusherApp_id,
+              APIKeys.PusherKey,
+              APIKeys.PusherSecret,
+              options);
+
+            var result = await pusher.TriggerAsync(
+              "my-channel",
+              "my-event",
+              new { message = "hello world" });
+
+            return new HttpStatusCodeResult((int)HttpStatusCode.OK);
         }
         public ActionResult RentOutItem(int id, int ItemId)
         {

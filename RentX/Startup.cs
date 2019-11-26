@@ -4,7 +4,8 @@ using Microsoft.Owin;
 using Owin;
 using RentX.Models;
 
-[assembly: OwinStartupAttribute(typeof(RentX.Startup))]
+//[assembly: OwinStartupAttribute(typeof(RentX.Startup))]
+[assembly: OwinStartup(typeof(RentX.Startup))]
 namespace RentX
 {
     public partial class Startup
@@ -13,6 +14,7 @@ namespace RentX
         {
             ConfigureAuth(app);
             CreateRolesAndUsers();
+            app.MapSignalR();
         }
         private void CreateRolesAndUsers()
         {
