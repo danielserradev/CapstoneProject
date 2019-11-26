@@ -360,10 +360,9 @@
     <Content Include="Views\Ratings\GetLeasorRatings.cshtml" />
     <Content Include="Views\Renters\GetPaymentRequests.cshtml" />
     <Content Include="Views\Renters\GetAllItemsForRent.cshtml" />
-    <Content Include="Views\Renters\PayRequest.cshtml" />
     <Content Include="Views\Renters\StripePayment.cshtml" />
-    <Content Include="Views\Leasors\Messenger.cshtml" />
     <Content Include="Views\Home\Chat.cshtml" />
+    <Content Include="Views\Renters\GetAllRentedItems.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

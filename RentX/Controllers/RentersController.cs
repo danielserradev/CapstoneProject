@@ -20,6 +20,13 @@ namespace RentX.Controllers
             context = new ApplicationDbContext();
             sendText = new SMSController();
         }
+        public ActionResult GetAllRentedItems()
+        {
+            string appId = User.Identity.GetUserId();
+            Renter renter = context.Renters.Where(r => r.ApplicationId == appId).FirstOrDefault();
+            List<Item> items = context.Items.Where(i => i.RenterId == renter.RenterId).ToList();
+            return View(items);
+        }
         public ActionResult StripePayment(Item item)
         {
             TransactionViewModel transactionViewModel = new TransactionViewModel() { ItemName = "", ItemPrice = 0, RenterId = 0 };

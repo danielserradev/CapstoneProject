@@ -15,6 +15,7 @@ namespace RentX.Controllers
         {
             context = new ApplicationDbContext();
         }
+
         // GET: Items
         public ActionResult Index()
         {
@@ -42,10 +43,7 @@ namespace RentX.Controllers
         {
             try
             {
-                // TODO: Add insert logic here
-                
-                
-
+                // TODO: Add insert logic here  
                 string id = User.Identity.GetUserId();
                 var leaser = context.Leasors.Where(u => u.ApplicationId == id).FirstOrDefault();
                 //var renter = context.Renters.Where(r => r.ApplicationId == id).FirstOrDefault();

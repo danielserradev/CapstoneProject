@@ -17,36 +17,36 @@ namespace RentX.Controllers
     {
         ApplicationDbContext context;
         SMSController sendText;
+        RatingsController rate;
         public LeasorsController()
         {
             context = new ApplicationDbContext();
             sendText = new SMSController();
+            rate = new RatingsController();
         }
-        public ActionResult Messenger()
+        public ActionResult UnRentItem()
         {
-            return View();
-        }
-        [HttpPost]
-        public async Task<ActionResult> Messenger(Leasor leasor)
-        {
-            var options = new PusherOptions
+            string appId = User.Identity.GetUserId();
+            Leasor leasor = context.Leasors.Where(r => r.ApplicationId == appId).FirstOrDefault();
+            List<Item> items = context.Items.Where(i => i.LeasorId == leasor.LeasorId).ToList();
+            
+            foreach (Item item in items)
             {
-                Cluster = "us2",
-                Encrypted = true
-            };
-
-            var pusher = new Pusher(
-              APIKeys.PusherApp_id,
-              APIKeys.PusherKey,
-              APIKeys.PusherSecret,
-              options);
-
-            var result = await pusher.TriggerAsync(
-              "my-channel",
-              "my-event",
-              new { message = "hello world" });
-
-            return new HttpStatusCodeResult((int)HttpStatusCode.OK);
+                if(DateTime.Now >= item.EndDate)
+                {
+                    Renter renter = context.Renters.Where(r => r.RenterId == item.RenterId).FirstOrDefault();
+                    item.Availability = true;
+                    item.StartDate = null;
+                    item.EndDate = null;
+                    item.RenterId = null;
+                    Rating rating = new Rating();
+                    rating.LeasorId = leasor.LeasorId;
+                    context.SaveChanges();
+                    sendText.SendSMSToRenterForRentPeriodEnding(renter);
+                    RedirectToAction("Create", "Ratings", rating);
+                }
+            }
+            return View();
         }
         public ActionResult RentOutItem(int id, int ItemId)
         {

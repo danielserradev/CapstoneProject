@@ -12,6 +12,7 @@ namespace RentX.Models
         [Key]
         public int RatingId { get; set; }
 
+        [Display(Name = "Scale 1-5")]
         public int NumOfStars { get; set; }
 
         public string Review { get; set; }

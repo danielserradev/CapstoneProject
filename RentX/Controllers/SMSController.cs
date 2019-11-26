@@ -91,5 +91,23 @@ namespace RentX.Controllers
 
 
         }
+
+        public ActionResult SendSMSToRenterForRentPeriodEnding(Renter renter)
+        {
+            var accountSid = APIKeys.TwilioaccountSid;
+            var authToken = APIKeys.TwilioauthToken;
+            TwilioClient.Init(accountSid, authToken);
+
+            var to = new PhoneNumber("+1" + renter.PhoneNumber);
+            var from = new PhoneNumber("+19285506141");
+
+            var message = MessageResource.Create(
+                to: to,
+                from: from,
+                body: "Your rental period has ended. Please return the Item.");
+            return Content(message.Sid);
+
+
+        }
     }
 }

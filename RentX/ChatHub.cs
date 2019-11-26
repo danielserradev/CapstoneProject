@@ -14,5 +14,9 @@ namespace RentX
             Clients.All.addNewMessageToPage(name, message);
 
         }
+        //public void Send(string name, string message, string connId)
+        //{
+        //    Clients.Client(connId).broadcastMessage(name, message);
+        //}
     }
 }
