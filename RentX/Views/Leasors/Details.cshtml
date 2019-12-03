@@ -126,7 +126,8 @@
     @Html.ActionLink("See My Reviews", "GetLeasorRatings", "Ratings", new { id = Model.LeasorId }, null) |
     @Html.ActionLink("Edit", "Edit", new { id = Model.LeasorId }) |
     @Html.ActionLink("Back to List", "Index") |
-    @Html.ActionLink("Go to Messenger", "Messenger", "Leasors") |
-    @Html.ActionLink("Check Rent Periods", "UnRentItem", "Leasors")
+    
+    @Html.ActionLink("Check Rent Periods", "UnRentItem", "Leasors") |
+    @Html.ActionLink("Check RatingQueue", "GetRatingQueue", "Leasors")
 </p>
 

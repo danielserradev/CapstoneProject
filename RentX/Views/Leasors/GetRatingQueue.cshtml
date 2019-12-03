@@ -1,0 +1,38 @@
+﻿@model IEnumerable<RentX.Models.RatingQueue>
+
+@{
+    ViewBag.Title = "GetRatingQueue";
+}
+
+<h2>GetRatingQueue</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.LeasorId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RenterId)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.LeasorId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RenterId)
+        </td>
+        <td>
+            @Html.ActionLink("Give Review", "CreateRatingForLeasor", "Ratings", new { id = item.RenterId }, null ) |
+            
+        </td>
+    </tr>
+}
+
+</table>

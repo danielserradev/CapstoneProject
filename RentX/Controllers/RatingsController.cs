@@ -119,5 +119,30 @@ namespace RentX.Controllers
                 return View();
             }
         }
+        public ActionResult CreateRatingForLeasor()
+        {
+            //Renter renter = context.Renters.Where(r => r.RenterId == id).FirstOrDefault();
+            Rating rating = new Rating();
+            return View(rating);
+        }
+
+        // POST: Ratings/Create
+        [HttpPost]
+        public ActionResult CreateRatingForLeasor(Rating rating, int id)
+        {
+            try
+            {
+                // TODO: Add insert logic here                
+                Renter renter = context.Renters.Where(r => r.RenterId == id).FirstOrDefault();
+                rating.RenterId = renter.RenterId;
+                context.Ratings.Add(rating);
+                context.SaveChanges();
+                return RedirectToAction("Index", "Home");
+            }
+            catch
+            {
+                return View();
+            }
+        }
     }
 }

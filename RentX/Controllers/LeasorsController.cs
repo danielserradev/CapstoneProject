@@ -8,7 +8,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
-using PusherServer;
+
 using System.Net;
 
 namespace RentX.Controllers
@@ -23,6 +23,13 @@ namespace RentX.Controllers
             context = new ApplicationDbContext();
             sendText = new SMSController();
             rate = new RatingsController();
+        }
+        public ActionResult GetRatingQueue()
+        {
+            string appId = User.Identity.GetUserId();
+            Leasor leasor = context.Leasors.Where(r => r.ApplicationId == appId).FirstOrDefault();
+            List<RatingQueue> ratingQueues = context.RatingQueues.Where(r => r.LeasorId == leasor.LeasorId).ToList();
+            return View(ratingQueues);
         }
         public ActionResult UnRentItem()
         {
@@ -39,14 +46,16 @@ namespace RentX.Controllers
                     item.StartDate = null;
                     item.EndDate = null;
                     item.RenterId = null;
-                    Rating rating = new Rating();
-                    rating.LeasorId = leasor.LeasorId;
+                    RatingQueue ratingQueue = new RatingQueue();
+                    ratingQueue .LeasorId = leasor.LeasorId;
+                    ratingQueue.RenterId = renter.RenterId;
+                    context.RatingQueues.Add(ratingQueue);
                     context.SaveChanges();
                     sendText.SendSMSToRenterForRentPeriodEnding(renter);
-                    RedirectToAction("Create", "Ratings", rating);
+                    //RedirectToAction("Create", "Ratings", rating);
                 }
             }
-            return View();
+            return RedirectToAction("Index", "Home");
         }
         public ActionResult RentOutItem(int id, int ItemId)
         {

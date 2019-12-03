@@ -208,6 +208,7 @@
     <Compile Include="Controllers\LeasorsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\QueuesController.cs" />
+    <Compile Include="Controllers\RatingQueuesController.cs" />
     <Compile Include="Controllers\RatingsController.cs" />
     <Compile Include="Controllers\RentersController.cs" />
     <Compile Include="Controllers\SMSController.cs" />
@@ -259,6 +260,10 @@
     <Compile Include="Migrations\201911222013214_phonenumber.Designer.cs">
       <DependentUpon>201911222013214_phonenumber.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201911271645183_ratingqueue.cs" />
+    <Compile Include="Migrations\201911271645183_ratingqueue.Designer.cs">
+      <DependentUpon>201911271645183_ratingqueue.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -270,6 +275,7 @@
     <Compile Include="Models\Queue.cs" />
     <Compile Include="Models\QueueRenter.cs" />
     <Compile Include="Models\Rating.cs" />
+    <Compile Include="Models\RatingQueue.cs" />
     <Compile Include="Models\Renter.cs" />
     <Compile Include="Models\Transaction.cs" />
     <Compile Include="Models\TransactionViewModel.cs" />
@@ -363,10 +369,12 @@
     <Content Include="Views\Renters\StripePayment.cshtml" />
     <Content Include="Views\Home\Chat.cshtml" />
     <Content Include="Views\Renters\GetAllRentedItems.cshtml" />
+    <Content Include="Views\Leasors\GetRatingQueue.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Queues\" />
+    <Folder Include="Views\RatingQueues\" />
     <Folder Include="Views\Transactions\" />
   </ItemGroup>
   <ItemGroup>
@@ -415,6 +423,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201911222013214_phonenumber.resx">
       <DependentUpon>201911222013214_phonenumber.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911271645183_ratingqueue.resx">
+      <DependentUpon>201911271645183_ratingqueue.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
